@@ -12,10 +12,13 @@ public class SimulationSLR {
     
     //Data Set ={(1,2), (2,4), (3,6), (4,8), (5, 10)} 
 
-    int x[]={1, 2, 3, 4, 5};
-    int y[]= {2, 4, 6, 8, 10};
+    //int x[]={1, 2, 3, 4, 5};
+    //int y[]= {2, 4, 6, 8, 10};
     
-    int sumX = 0, sumY = 0, sumXY = 0, sumXQ = 0, n=5;
+    int x[]= {23, 26, 30, 34, 43, 48, 52, 57, 58};
+    int y[]={651, 762, 856, 1063, 1190, 1298, 1421, 1440, 1518};
+    
+    double sumX = 0, sumY = 0, sumXY = 0, sumXQ = 0, n=9;
     double beta0=0, beta1=0;
     
     public SimulationSLR (){
@@ -25,7 +28,7 @@ public class SimulationSLR {
         this.sumXQ=0;
         this.beta0=0;
         this.beta1=0;
-        this.n=5;
+        this.n=9;
         
         for(int i=0; i<n; i++){
            sumX += x[i];
@@ -59,9 +62,6 @@ public class SimulationSLR {
         System.out.println("Yi: "+ obsimulation.sumY);
         System.out.println("XiYi: "+ obsimulation.sumXY);
         System.out.println("Xi^2: "+ obsimulation.sumXQ);
-        System.out.println("B0: " + obsimulation.beta0);
-        System.out.println("B1: "+obsimulation.beta1);
-        
         System.out.println("\n");
 
         
