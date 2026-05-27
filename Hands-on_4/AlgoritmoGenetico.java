@@ -7,11 +7,10 @@ import java.util.Random;
 public class AlgoritmoGenetico {
 
     private List<Individuo> poblacion;
-    private int tamanoPoblacion = 200;       // ↑ más diversidad genética
+    private int tamanoPoblacion = 200;       
     private double probCruce = 0.95;
-    private double probMutacion = 0.05;      // ↑ de 0.01 a 0.05 para escapar óptimos locales
-    private double tasaMutacionAdaptiva;
-    private int maxGeneraciones = 5000;      // límite de seguridad
+    private double probMutacion = 0.05;     
+    private int maxGeneraciones = 5000;      
     private Random random = new Random();
 
     public AlgoritmoGenetico() {
@@ -31,7 +30,7 @@ public class AlgoritmoGenetico {
 
         while (!condicionAlcanzada && generacion <= maxGeneraciones) {
 
-            // --- Evaluar fitness ---
+            // fitness
             double sumaFitnessTotal = 0;
             Individuo mejorDeGeneracion = poblacion.get(0);
 
@@ -43,12 +42,10 @@ public class AlgoritmoGenetico {
                 }
             }
 
-            // Actualizar mejor global
             if (mejorGlobal == null || mejorDeGeneracion.fitness > mejorGlobal.fitness) {
                 mejorGlobal = copiarIndividuo(mejorDeGeneracion);
             }
 
-            // Mutación adaptiva: si no hay mejora, aumentar mutación
             if (mejorGlobal.fitness - mejorFitnessAnterior < 0.0001) {
                 generacionesSinMejora++;
                 if (generacionesSinMejora > 50) {
@@ -60,7 +57,6 @@ public class AlgoritmoGenetico {
             }
             mejorFitnessAnterior = mejorGlobal.fitness;
 
-            // Log cada 100 generaciones y la primera
             if (generacion % 500 == 0 || generacion == 1) {
                 System.out.printf("Generacion: %d | Mejor R^2: %.4f | Ecuacion: y = %.2f + %.2fx | MutRate: %.3f\n",
                         generacion, mejorGlobal.fitness,
